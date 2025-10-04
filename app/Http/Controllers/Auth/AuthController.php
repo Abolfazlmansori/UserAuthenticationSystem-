@@ -8,7 +8,9 @@ use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use App\Services\AuthService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use function Laravel\Prompts\error;
 
 class AuthController extends Controller
 {
@@ -21,17 +23,17 @@ class AuthController extends Controller
     public function Login(LoginRequest $request,AuthService $authService)
     {
         if ($authService->Login($request->validated())){
-            return redirect()->route('email.verify')->with('success', 'You are successfully logged in');
+                return redirect()->route('home')->with('success', 'با موفقیت ورود کردید');
         }
         else{
             return back()->withErrors([
-                'email' => 'The provided credentials do not match our records.',
+                'email' => 'ایمیل یا رمزعبور مشکل دارد!',
             ]);
         }
     }
     public function Logout(AuthService $authService)
     {
         $authService->Logout();
-        return redirect()->route('home')->with('success', 'You are successfully logged out');
+        return redirect()->route('home')->with('success', 'با موفقیت خارج شدید');
     }
 }

@@ -18,8 +18,4 @@ class PageController extends Controller
     {
         return view('Auth.Login');
     }
-    public function ShowEmailVerifyPage()
-    {
-        return view('Auth.EmailVerify');
-    }
 }

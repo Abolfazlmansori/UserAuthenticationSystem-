@@ -40,18 +40,21 @@
 <main class="h-screen flex flex-col justify-center items-center pt-16"> <!-- pt-16 برای فضای بالای منوی فیکس -->
 
     @include('layout.partials.Message.success')
-
-    <div class="flex gap-6">
-        <a class="border-4 border-white text-4xl text-white p-4 rounded-lg hover:bg-white hover:text-black transition"
-           href="{{ route('register') }}">
-            Register
-        </a>
-        <a class="border-4 border-white text-4xl text-white p-4 rounded-lg hover:bg-white hover:text-black transition"
-           href="{{ route('login') }}">
-            Login
-        </a>
-    </div>
-
+    @auth
+        <p class="text-2xl p-2 text-blue-400 "> welcome {{ auth()->user()->name }}</p>
+    @endauth
+    @guest
+        <div class="flex gap-6">
+            <a class="border-4 border-white text-4xl text-white p-4 rounded-lg hover:bg-white hover:text-black transition"
+               href="{{ route('register') }}">
+                Register
+            </a>
+            <a class="border-4 border-white text-4xl text-white p-4 rounded-lg hover:bg-white hover:text-black transition"
+               href="{{ route('login') }}">
+                Login
+            </a>
+        </div>
+    @endguest
 </main>
 
 <script>
