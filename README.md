@@ -28,7 +28,7 @@
 ## نصب و راه‌اندازی
 
 ```bash
-git clone <REPO_URL>
+git clone https://github.com/Abolfazlmansori/UserAuthenticationSystem-.git
 cd User-Authentication-System
 composer install
 cp .env.example .env
